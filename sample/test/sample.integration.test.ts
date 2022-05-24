@@ -11,6 +11,8 @@ import { Connection } from 'typeorm'
 describe('Sample Integration Test', () => {
   let connection: Connection
   beforeAll(async (done) => {
+    jest.setTimeout(100000)
+
     setConnectionOptions({
       type: 'sqlite',
       database: ':memory:',
@@ -22,12 +24,14 @@ describe('Sample Integration Test', () => {
   })
 
   afterAll(async (done) => {
+    jest.setTimeout(100000)
+
     await tearDownDatabase()
   })
 
   test('Should create a user with the entity factory', async (done) => {
     const createdUser = await factory(User)().create()
-    const user = await connection.getRepository(User).findOne(createdUser.id)
+    const user = await connection.getRepository(User).findOne({ where: { id: createdUser.id }})
     expect(createdUser.firstName).toBe(user.firstName)
     done()
   })

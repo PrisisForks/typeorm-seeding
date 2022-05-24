@@ -1,4 +1,4 @@
-import Faker from 'faker'
+import { Faker } from '@faker-js/faker'
 import { define, factory } from '../../src/typeorm-seeding'
 import { Pet } from '../entities/Pet.entity'
 import { User } from '../entities/User.entity'

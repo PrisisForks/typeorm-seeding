@@ -6,6 +6,7 @@ export const importFiles = async (filePaths: string[]) => {
 }
 
 export const loadFiles = (filePattern: string[]): string[] => {
+
   return filePattern
     .map((pattern) => glob.sync(path.resolve(process.cwd(), pattern)))
     .reduce((acc, filePath) => acc.concat(filePath), [])

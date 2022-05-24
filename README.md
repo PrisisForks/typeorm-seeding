@@ -81,7 +81,7 @@ Then for each entity define a factory. The purpose of a factory is to create new
 
 ```typescript
 // user.factory.ts
-define(User, (faker: typeof Faker) => {
+define(User, (faker: Faker) => {
   const gender = faker.datatype.number(1)
   const firstName = faker.name.firstName(gender)
   const lastName = faker.name.lastName(gender)
@@ -93,7 +93,7 @@ define(User, (faker: typeof Faker) => {
 })
 
 // pet.factory.ts
-define(Pet, (faker: typeof Faker) => {
+define(Pet, (faker: Faker) => {
   const gender = faker.datatype.number(1)
   const name = faker.name.firstName(gender)
 
@@ -246,11 +246,11 @@ define: <Entity, Context>(entity: Entity, factoryFn: FactoryFunction<Entity, Con
 ```
 
 ```typescript
-import Faker from 'faker'
+import { Faker } from '@faker-js/faker'
 import { define } from 'typeorm-seeding'
 import { User } from '../entities'
 
-define(User, (faker: typeof Faker, context: { roles: string[] }) => { ... })
+define(User, (faker: Faker, context: { roles: string[] }) => { ... })
 ```
 
 ### `factory`

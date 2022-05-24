@@ -1,5 +1,5 @@
 import * as yargs from 'yargs'
-import * as ora from 'ora'
+import ora from 'ora'
 import * as chalk from 'chalk'
 import { importSeed } from '../importer'
 import { loadFiles, importFiles } from '../utils/file.util'
